@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { contactSchemaResponse } from './contacts.schema';
 
 const clientSchema = z.object({
     id: z.number(),
@@ -18,11 +19,18 @@ const clientSchemaResponse = clientSchema.omit({
     password: true
 })
 
+const clientListOneSchemaResponse = clientSchema.omit({
+    password: true
+}).extend({
+    contacts: z.array(contactSchemaResponse)
+})
+
 const clientSchemaUpdate = clientSchemaRequest.partial()
 
 export { 
     clientSchema,
     clientSchemaRequest,
     clientSchemaResponse,
-    clientSchemaUpdate
+    clientSchemaUpdate,
+    clientListOneSchemaResponse
 }
