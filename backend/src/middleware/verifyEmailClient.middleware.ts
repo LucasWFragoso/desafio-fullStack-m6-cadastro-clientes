@@ -4,7 +4,7 @@ import { AppDataSource } from "../data-source";
 import { Client } from "../entities";
 import { AppError } from "../errors";
 
-const verifyEmailExistMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const verifyEmailClientExistMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     
     const ClientsRepository: Repository<Client> = AppDataSource.getRepository(Client)
 
@@ -27,4 +27,4 @@ const verifyEmailExistMiddleware = async (req: Request, res: Response, next: Nex
     }
 }
 
-export default verifyEmailExistMiddleware
+export default verifyEmailClientExistMiddleware
